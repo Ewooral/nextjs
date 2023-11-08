@@ -1,18 +1,44 @@
 @import 'variables.module.scss';
-.Custom__Background{
+
+.Custom__Background {
   background-color: $background-color;
 }
 
-.Custom__Wrapper{
+.Custom__Wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 
 }
-.Custom__Input{
-padding: .5rem;
+
+.Custom__Input {
+
+}
+
+.Custom__Input header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: $custom-color;
+  width: 100%;
+  display: flex;
+  color: black;
+  justify-content: center;
+}
+
+.Custom__Input form {
+  display: flex;
+  justify-content: space-evenly;
   background-color: $background-color;
+  padding: 5rem;
+  flex-direction: column;
+}
+
+.Custom__Input form button {
+  background-color: $custom-color;
+  color: $custom-dark;
 }
