@@ -1,4 +1,18 @@
 @import 'variables.module.scss';
-.custom__Background{
+.Custom__Background{
+  background-color: $background-color;
+}
+
+.Custom__Wrapper{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+}
+.Custom__Input{
+padding: .5rem;
   background-color: $background-color;
 }
