@@ -6,18 +6,19 @@
 
 .Custom__Wrapper {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-start;
+  align-items: flex-start;
   position: absolute;
   top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  left: 0%;
+  //transform: translate(-50%, -50%);
 
 }
 
 .Custom__Input {
 
 }
+
 
 .Custom__Input header {
   position: absolute;
@@ -30,15 +31,48 @@
   justify-content: center;
 }
 
-.Custom__Input form {
+.Custom__Input > div  {
   display: flex;
-  justify-content: space-evenly;
-  background-color: $background-color;
-  padding: 5rem;
+  justify-content: center;
   flex-direction: column;
+  background-color: $background-color;
+  align-items: flex-start;
+}
+.Custom__Input > div > form {
+  display: flex;
+  justify-content: space-between;
+  padding: 5rem;
+  align-content: center;
+  align-items: center;
 }
 
-.Custom__Input form button {
-  background-color: $custom-color;
+.Custom__Input > div > form > input {
   color: $custom-dark;
+  margin: 1rem;
+  padding: .4rem;
+}
+
+.Custom__Input > div > form > button {
+  background-color: #ffff02;
+  color: black;
+  box-shadow: 2px 2px 2px 0px white,1px 0px 8px 3px #f7f4f4;
+  border-radius: 3rem;
+  padding: .3rem;
+  border: 4px solid black;
+}
+
+.Custom__Table{
+  display: flex;
+  align-self: flex-start;
+  width: 100%;
+  flex-direction: column;
+}
+.Custom__TableRow{
+  background-color: #ffff02;
+  color: black;
+  box-shadow: 2px 2px 2px 0px white,1px 0px 8px 3px #f7f4f4;
+  border-radius: 1rem;
+  padding: .1rem;
+  border: 4px solid black;
+  width: 50%;
 }
