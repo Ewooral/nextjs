@@ -5,3 +5,6 @@
 
 ### Todo App
 https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/Client-side_JavaScript_frameworks/React_interactivity_events_state
+
+### NextJS Dashboard project
+https://nextjs.org/learn/dashboard-app/getting-started
