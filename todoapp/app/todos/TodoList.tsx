@@ -1,8 +1,5 @@
-import CustomTable from "@/app/components/CustomTable";
 import styles from '@/styles/style.module.css'
-import useStore from '@/store/store'
-import {useEffect} from "react";
-import TableRow from "@/app/components/TableRow";
+import TableRow from "@/app/todos/TableRow";
 
 const TodoList = (props: any) => {
     const objList = props.todos.map((i: any, k: any) => (
@@ -20,7 +17,6 @@ const TodoList = (props: any) => {
                     </tr>
                     </thead>
                     <tbody>
-
                     <TableRow   index={objList.key} text={objList.item}/>
                     </tbody>
                 </table>

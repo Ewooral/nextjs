@@ -1,26 +1,29 @@
-import {create} from 'zustand'
+import { create } from 'zustand'
+import {devtools} from "zustand/middleware";
 
-
-type Todo = {
-    text: string;
-};
-
-type State = {
-    todos: Todo[];
-    addTodo: (text: string) => void;
-    removeTodo: (index: number) => void;
-    updateTodo: (index: number, text: string) => void;
-};
-
-const useStore = create<State>((set) => ({
+// @ts-ignore
+const useStore = create<State>(devtools((set) => ({
+    count: 0,
     todos: [],
-    addTodo: (text) => set((state) => ({ todos: [...state.todos, { text }] })),
-    removeTodo: (index) =>
-        set((state) => ({ todos: state.todos.filter((_, i) => i !== index) })),
-    updateTodo: (index, text) =>
+    addTodo: (text: string) => set((state) => ({ todos: [...state.todos, { text }] }), false, 'addTodo'),
+    removeTodo: (index: number) => {
+        set((state) => ({ todos: state.todos.filter((_, i) => i !== index) }), false, 'removeTodo')
+    },
+
+    updateTodo: (index: number, text: string) =>
         set((state) => ({
             todos: state.todos.map((todo, i) => (i === index ? { text } : todo)),
-        })),
-}));
+        }),false, 'updateTodo'),
+})));
 
-export default useStore;
+// Assert the type of 'window' to include the 'store' property
+declare global {
+    interface Window {
+        store: typeof useStore;
+    }
+}
+
+// Assign the store to the window object
+window.store = useStore;
+
+export default useStore

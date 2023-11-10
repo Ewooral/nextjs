@@ -1,6 +1,7 @@
+'use client'
 import styles from '@/styles/custom.module.scss'
 import useStore from '@/store/store'
-import TodoList from "@/app/components/TodoList";
+import TodoList from "@/app/todos/TodoList";
 
 const TodoApp = () => {
     // @ts-ignore

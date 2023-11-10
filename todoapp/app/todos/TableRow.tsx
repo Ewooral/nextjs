@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styles from '@/styles/custom.module.scss'
 import useStore from '@/store/store'
 import EditNoteIcon from '@mui/icons-material/EditNote';
@@ -22,23 +22,24 @@ function TableRow(props: { text: any, index: number } ) {
     // console.log(objList[0].item.text)
 
     const handleRemove = () => {
-        console.log('Removing...', props.text, props.index)
-        removeTodo(props.index);
+        objList.map((item: any, index: number) => {
+            removeTodo(index);
+            console.log('Removing...', item.item.text, ': ', index)
+        })
     };
 
-
-
+    // @ts-ignore
     return (
         <>
             {objList.map((item: any, index: number) => (
                 <tr key={index}
                 >
-                    <td>{`${index + 1}`}</td>
+                    {/*<td>{`${index + 1}`}</td>*/}
+                    <td>{`${index}`}</td>
                     <td>{item.item.text}</td>
                     <td>
                         <button
                             className={styles['Custom__TableRow']}
-                            // onClick={}
                         >
                             <EditNoteIcon/>
                         </button>
