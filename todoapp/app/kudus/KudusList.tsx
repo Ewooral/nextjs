@@ -65,7 +65,7 @@ const KuduList: React.FC = () => {
           <input
             type="text"
             required
-            maxLength={5}
+            maxLength={15}
             minLength={2}
             value={newKudu}
             onChange={(e) => setNewKudu(e.target.value)}
@@ -111,7 +111,7 @@ const KuduList: React.FC = () => {
                     </>
                   ) : (
                     <>
-                      <td>{`${kudu.completed}`}</td>
+                      <td className={`${kudu.completed ? 'Yes' : 'No'}`}>{`${kudu.completed}`}</td>
                       <td>{kudu.id}</td>
                       {/* <td>{kudu.text}</td> */}
                       <td
