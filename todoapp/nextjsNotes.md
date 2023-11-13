@@ -8,3 +8,6 @@ https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/Client-side_Jav
 
 ### NextJS Dashboard project
 https://nextjs.org/learn/dashboard-app/getting-started
+
+### Form Validation notes 
+https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation

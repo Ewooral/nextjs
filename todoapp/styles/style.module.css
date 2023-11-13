@@ -17,12 +17,12 @@
 }
 
 .table tr:nth-child(even) {
-    background-color: #013c01;
+    background-color: #ececec;
 }
 
 .table tr:hover {
-    background-color: rgba(9, 9, 9, 0.5);
-    color: white;
+    background-color:greenyellow;
+    color: black;
 }
 
 .toggleContainer{
@@ -110,4 +110,64 @@ input:checked + .slider:before {
 .PokeMan > th {
     text-align: left;
     font-size: x-large;
+}
+
+.Custom__Container{
+    display: flex;
+    justify-content: center;
+    /*flex-direction: column;*/
+    align-self: center;
+    padding: 2rem;
+}
+
+.Custom__Form{
+    background: white;
+    color: black;
+    padding: 1.8rem;
+}
+.Custom__Form > form > input {
+    display: flex;
+    align-items: center;
+    color: black;
+    padding: .4rem;
+    /*border: 1px solid black*/
+    /*background: #dddddd;*/
+    border-bottom: 1px solid ;
+    border-radius: 0;
+    outline: none;
+;
+    margin: .5rem;
+}
+#age > input:invalid {
+    border: 2px solid red;
+}
+.Custom__Form > form > input :valid {
+    border: 2px solid green;
+}
+.Custom__Form > form > button {
+    background: black;
+    padding: .3rem;
+    color: white;
+}
+.Custom__Form .Color{
+    color: #5497ff;
+}
+.Custom__Form > h1{
+    text-align: center;
+    font-weight: bolder;
+    font-size: 2rem;
+    margin: 1rem 0;
+}
+
+
+.inputInvalid {
+    border: 1px solid red;
+}
+
+.inputInvalidRequired {
+    background-image: linear-gradient(to right, pink, lightgreen);
+}
+
+.inputValid {
+    border: 2px solid black;
 }
