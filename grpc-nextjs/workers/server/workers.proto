@@ -10,6 +10,57 @@ service WorkersManagementService {
   rpc UpdateWorker (UpdateWorkerRequest) returns (UpdateWorkerResponse);
   rpc DeleteWorker (DeleteWorkerRequest) returns (DeleteWorkerResponse);
   rpc ListWorkers (ListWorkersRequest) returns (ListWorkersResponse);
+  rpc RegisterUser (RegisterUserRequest) returns (RegisterUserResponse);
+  rpc LoginUser (LoginUserRequest) returns (LoginUserResponse);
+  rpc ForgotPassword (ForgotPasswordRequest) returns (ForgotPasswordResponse);
+  rpc VerifyOTP (VerifyOTPRequest) returns (VerifyOTPResponse);
+  rpc ResetPassword (ResetPasswordRequest) returns (ResetPasswordResponse);
+
+}
+
+message RegisterUserRequest {
+  string username = 1;
+  string password = 2;
+}
+
+message RegisterUserResponse {
+  string id = 1;
+  string message = 2;
+}
+
+message LoginUserRequest {
+  string username = 1;
+  string password = 2;
+}
+
+message LoginUserResponse {
+  string token = 1;
+}
+
+message ForgotPasswordRequest {
+  string username = 1;
+}
+
+message ForgotPasswordResponse {
+  string message = 1;
+}
+
+message VerifyOTPRequest {
+  string username = 1;
+  string otp_code = 2;
+}
+
+message VerifyOTPResponse {
+  string message = 1;
+}
+
+message ResetPasswordRequest {
+  string username = 1;
+  string new_password = 2;
+}
+
+message ResetPasswordResponse {
+  string message = 1;
 }
 
 message CreateWorkerRequest {

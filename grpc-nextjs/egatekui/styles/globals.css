@@ -77,8 +77,91 @@
 
 .changeGame{
   position: fixed;
-  top: 0%;
+  top: 0;
   left: 0;
   height: 100dvh;
   width: 50%;
 }
+
+.carousel {
+  position: relative;
+}
+
+.carousel-item {
+  position: absolute;
+  visibility: hidden;
+}
+
+.carousel-item.visible {
+  visibility: visible;
+}
+
+#caro > span{
+  margin: 1rem;
+  width:15px;
+  height: 15px;
+  border-radius: 50%;
+}
+.Custom__Options{
+  color: rgb(128, 128, 128);
+    margin: 0 0.7rem;
+}
+
+/* Hide the default checkbox */
+.custom-checkbox input[type="checkbox"] {
+  display: none;
+}
+
+/* Create a new custom checkbox */
+.custom-checkbox label:before {
+  font-family: "Font Awesome 5 Free"; 
+  content: ""; /* laughing emoji unicode */
+  display: inline-block;
+  width: 17px;
+  height: 17px;
+  margin-right: 10px;
+  background-color: #fff;
+  border: 2px solid #c9c9c9;
+  font-weight: 900; /* needed for Font Awesome */
+  text-align: center; /* center the icon */
+  border-radius:4px;
+}
+
+/* Change the icon when the checkbox is checked */
+.custom-checkbox input[type="checkbox"]:checked + label:before {
+  content: "👍"; /* thumbs up unicode */
+  background-color: #2563eb;
+  color: #fff;
+  padding:3px;
+  font-size: 18px;
+  border: 2px solid #2563eb;
+
+}
+
+/* Add a red border when there are validation errors */
+.custom-checkbox.error input[type="checkbox"] + label:before {
+  border-color: #f495b0; /* red color */
+}
+
+/* COUNT DOWN */
+.Countdown {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.Countdown-unit {
+  text-align: center;
+}
+
+.Countdown-value {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.Countdown-label {
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  color: #888;
+}
+
