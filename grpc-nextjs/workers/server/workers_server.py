@@ -12,7 +12,9 @@ SECRET_KEY = 'Vh6$yP2bA#uR7*Zg'
 
 # import psycopg_binary
 
+# Update connection info
 connection = psycopg2.connect(database="workers", user="postgres", password="password", host="localhost", port=5432)
+
 
 
 class Worker:
@@ -35,7 +37,7 @@ def is_duplicate_entry(request):
 
 def validate_phone_number(phone_number):
     # Validate phone number format (___, ____, ____)
-    pattern = re.compile(r'^\+\d{3}, \d{5}, \d{4}$')
+    pattern = re.compile(r'^\d{12}$')
     return bool(pattern.match(phone_number))
 
 
@@ -67,20 +69,24 @@ def save_worker(worker):
 class WorkersManagementServiceServicer(workers_pb2_grpc.WorkersManagementServiceServicer):
     def __init__(self, secret_key):
         self.secret_key = secret_key
+        self.jwt_token = None  # Add this lin
+
+    def SomeOtherMethod(self, request, context):
+        print("JWT Token: ", self.jwt_token)
 
     def CreateWorker(self, request, context):
 
         # Validate the JWT token from the metadata
-        metadata = dict(context.invocation_metadata())
-        jwt_token = metadata.get('authorization', '').split('Bearer ')[-1]
-        print(jwt_token)
+        # metadata = dict(context.invocation_metadata())
+        # jwt_token = metadata.get('authorization', '').split('Bearer ')[-1]
+        # print("TOKEN: ", jwt_token)
 
-        try:
-            decoded_payload = jwt.decode(jwt_token, self.secret_key, algorithms=['HS256'])
-        except jwt.ExpiredSignatureError:
-            context.abort(StatusCode.UNAUTHENTICATED, "Token has expired")
-        except jwt.InvalidTokenError:
-            context.abort(StatusCode.UNAUTHENTICATED, "Invalid token")
+        # try:
+        #     decoded_payload = jwt.decode(jwt_token, self.secret_key, algorithms=['HS256'])
+        # except jwt.ExpiredSignatureError:
+        #     context.abort(StatusCode.UNAUTHENTICATED, "Token has expired")
+        # except jwt.InvalidTokenError:
+        #     context.abort(StatusCode.UNAUTHENTICATED, "WRONG TOKEN")
 
         # Validate the request
         if not self.validate_request(request):
@@ -182,11 +188,11 @@ class WorkersManagementServiceServicer(workers_pb2_grpc.WorkersManagementService
 
 
 def serve():
-    server = server(futures.ThreadPoolExecutor(max_workers=10))
+    grpc_server = server(futures.ThreadPoolExecutor(max_workers=10))
 
     workers_pb2_grpc.add_WorkersManagementServiceServicer_to_server(
         WorkersManagementServiceServicer(SECRET_KEY),
-        server
+        grpc_server
     )
 
     # Enable reflection for grpcurl
@@ -195,12 +201,12 @@ def serve():
         reflection.SERVICE_NAME
     )
     print(SERVICE_NAMES)
-    reflection.enable_server_reflection(SERVICE_NAMES, server)
+    reflection.enable_server_reflection(SERVICE_NAMES, grpc_server)
 
-    server.add_insecure_port('[::]:50051')
-    server.start()
+    grpc_server.add_insecure_port('[::]:50051')
+    grpc_server.start()
     print("Server is running. Listening on [::]:50051")
-    server.wait_for_termination()
+    grpc_server.wait_for_termination()
 
 
 if __name__ == '__main__':

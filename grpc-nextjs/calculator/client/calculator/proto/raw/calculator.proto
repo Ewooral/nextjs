@@ -1,0 +1,18 @@
+// calculator.proto
+syntax = "proto3";
+
+package calculator;
+
+service Calculator {
+  rpc GetTotal (TotalRequest) returns (TotalResponse);
+}
+
+message TotalRequest {
+  float num1 = 1;
+  float num2 = 2;
+}
+
+message TotalResponse {
+  float total = 1;
+  bool success = 2;
+}
